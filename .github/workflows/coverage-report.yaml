@@ -49,3 +49,4 @@ jobs:
           GITHUB_PULL_REQUEST_NUMBER: ${{ steps.pr.outputs.result || '' }}
           OCTOCOV_GITHUB_REF: refs/heads/${{ github.event.workflow_run.head_branch }}
           OCTOCOV_GITHUB_REF_NAME: ${{ github.event.workflow_run.head_branch }}
+          OCTOCOV_GITHUB_SHA: ${{ github.event.workflow_run.head_sha }}
