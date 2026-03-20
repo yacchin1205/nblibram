@@ -24,3 +24,25 @@ func TestGetMemeIDNoMetadata(t *testing.T) {
 		t.Errorf("expected empty meme for cell without metadata, got %q", id)
 	}
 }
+
+func TestGetMemePrevious(t *testing.T) {
+	nb := loadTestNotebook(t)
+
+	if prev := GetMemePrevious(nb.Cells[0]); prev != "" {
+		t.Errorf("cell 0: expected empty previous, got %q", prev)
+	}
+	if prev := GetMemePrevious(nb.Cells[2]); prev != "prev-1111" {
+		t.Errorf("cell 2: expected 'prev-1111', got %q", prev)
+	}
+}
+
+func TestGetMemeNext(t *testing.T) {
+	nb := loadTestNotebook(t)
+
+	if next := GetMemeNext(nb.Cells[0]); next != "" {
+		t.Errorf("cell 0: expected empty next, got %q", next)
+	}
+	if next := GetMemeNext(nb.Cells[2]); next != "next-2222" {
+		t.Errorf("cell 2: expected 'next-2222', got %q", next)
+	}
+}
