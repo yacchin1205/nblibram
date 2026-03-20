@@ -17,3 +17,10 @@ func TestGetMemeID(t *testing.T) {
 		t.Errorf("cell 4: expected 'aaaa-bbbb-cccc-1-abcd', got %q", id)
 	}
 }
+
+func TestGetMemeIDNoMetadata(t *testing.T) {
+	c := Cell{CellType: "code", Source: NBSource{"x = 1"}}
+	if id := GetMemeID(c); id != "" {
+		t.Errorf("expected empty meme for cell without metadata, got %q", id)
+	}
+}
